@@ -1,0 +1,6 @@
+@efcorejoin_HostAddress = http://localhost:5132
+
+GET {{efcorejoin_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
