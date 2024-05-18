@@ -20,7 +20,6 @@ namespace efcorejoin.Controllers
         {
             _logger = logger;
             _customerServices = customerServices;
-
         }
         [HttpPost("AddCustomer")]
         public IActionResult AddCustomer(Customer customer)

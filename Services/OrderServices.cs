@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using efcorejoin.Domain;
+using efcorejoin.Repository;
 
 namespace efcorejoin.Services
 {
     public class OrderServices : IOrderServices
     {
-        private readonly IOrderServices _orderServices;
-        public OrderServices(IOrderServices orderServices)
+        private readonly IOrderRepo _orderRepo;
+        public OrderServices(IOrderRepo orderRepo)
         {
-            _orderServices = orderServices;
+            _orderRepo = orderRepo;
         }
         public int AddCustomersOrder(CustomerOrderDTO customerOrderDTO)
         {
-            return _orderServices.AddCustomersOrder(customerOrderDTO);
+            return _orderRepo.AddCustomersOrder(customerOrderDTO);
         }
 
         public IEnumerable<CustomerOrderDTO> GetCustomersOrderById(int CustomerId)
         {
-            return _orderServices.GetCustomersOrderById(CustomerId);
+            return _orderRepo.GetCustomersOrderById(CustomerId);
         }
     }
 }

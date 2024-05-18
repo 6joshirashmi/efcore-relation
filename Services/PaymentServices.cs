@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using efcorejoin.Domain;
+using efcorejoin.Repository;
 
 namespace efcorejoin.Services
 {
     public class PaymentServices : IPaymentServices
-    { private readonly IPaymentServices _paymentServices;
-  public  PaymentServices(IPaymentServices paymentServices)
+    { private readonly IPaymentRepo _paymentRepo;
+  public  PaymentServices(IPaymentRepo paymentRepo)
     {
-_paymentServices=paymentServices;
+_paymentRepo=paymentRepo;
     }
         public int AddCustomerPayment(CustomerPaymentDTO customer)
         {
-            return _paymentServices.AddCustomerPayment(customer);
+            return _paymentRepo.AddCustomerPayment(customer);
         }
 
         public IEnumerable<CustomerPaymentDTO> GetCustomersPaymentListById(int id)
         {
-           return _paymentServices.GetCustomersPaymentListById(id);
+           return _paymentRepo.GetCustomersPaymentListById(id);
         }
     }
 }

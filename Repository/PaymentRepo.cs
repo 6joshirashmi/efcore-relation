@@ -18,12 +18,15 @@ namespace efcorejoin.Repository
         {
            _efcoredb=efcoredb;
         }
-        public int AddCustomerPayment(CustomerPaymentDTO customer)
+        public int AddCustomerPayment(CustomerPaymentDTO customerPaymentDTO)
         {
-            throw new NotImplementedException();
+          //  _efcoredb.payments.Add(customerPaymentDTO);
+            _efcoredb.SaveChanges();
+            return 1;
         }
 
-        public IEnumerable<CustomerPaymentDTO> GetCustomersPaymentListById()
+
+        public IEnumerable<CustomerPaymentDTO> GetCustomersPaymentListById(int id)
         {
             throw new NotImplementedException();
         }
