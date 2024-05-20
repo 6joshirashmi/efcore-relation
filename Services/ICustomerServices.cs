@@ -9,6 +9,7 @@ namespace efcorejoin.Services
     public interface ICustomerServices
     {
          public int AddCustomer(Customer customer);    
+         public Customer UpdateCustomer(Customer customer);
         public IEnumerable<Customer> GetCustomerList();   
         public IEnumerable<CustomerOrderDTO> GetCustomerOrderDetail();        
         public IEnumerable<CustomerPaymentDTO> GetCustomerPaymentDetail();

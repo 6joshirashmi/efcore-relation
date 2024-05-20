@@ -9,6 +9,7 @@ namespace efcorejoin.Repository
     public interface ICustomerRepo
     {        
         public int AddCustomer(Customer customer);    
+        public Customer UpdateCustomer(Customer customer);
         public IEnumerable<Customer> GetCustomerList();   
         public IEnumerable<CustomerOrderDTO> GetCustomerOrderDetail();        
         public IEnumerable<CustomerPaymentDTO> GetCustomerPaymentDetail();

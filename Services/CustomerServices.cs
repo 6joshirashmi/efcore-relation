@@ -19,7 +19,11 @@ namespace efcorejoin.Services
           var i=  _customerRepo.AddCustomer(customer);
           return i;
         }
+public Customer UpdateCustomer(Customer customer)
+{
 
+  return _customerRepo.UpdateCustomer(customer);
+}
         public IEnumerable<Customer> GetCustomerList()
         {
           return  _customerRepo.GetCustomerList();

@@ -17,11 +17,49 @@ namespace efcorejoin.Repository
         public int AddCustomer(Customer customer)
         {
           var c=  _efcoredb.Add(customer);
-            _efcoredb.SaveChanges();
-            
-            
+            _efcoredb.SaveChanges();  
               return 1;
         }
+public Customer UpdateCustomer(Customer customer)
+{
+var existingCustomer =(from c in _efcoredb.customers
+where c.CustomerId==customer.CustomerId
+select new  Customer {
+  CustomerId = c.CustomerId,
+                            FirstName = c.FirstName,
+                            LastName =c.LastName,
+                            Email =c.Email,
+                            Phone =c.Phone,
+                            Address =c.Address,
+                            City =c.City,
+                            State =c.State,
+                            ZipCode =c.ZipCode
+}).FirstOrDefault();
+      //  .Where(cs => cs.CustomerId == customer.CustomerId)
+       // .FirstOrDefault();
+
+    if (existingCustomer == null)
+    {
+        _efcoredb.Add(customer);
+        _efcoredb.SaveChanges();
+    }
+    else
+    {
+        // Update existing customer properties
+        existingCustomer.FirstName = customer.FirstName;
+        existingCustomer.LastName = customer.LastName;
+        existingCustomer.Email = customer.Email;
+        existingCustomer.Phone = customer.Phone;
+        existingCustomer.Address = customer.Address;
+        existingCustomer.City = customer.City;
+        existingCustomer.State = customer.State;
+        existingCustomer.ZipCode = customer.ZipCode;
+        _efcoredb.Update(existingCustomer);
+        _efcoredb.SaveChanges();
+    }
+
+    return existingCustomer;
+}
 
         public IEnumerable<Customer> GetCustomerList()
         {

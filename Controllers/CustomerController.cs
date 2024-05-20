@@ -33,6 +33,11 @@ namespace efcorejoin.Controllers
         {
             return Ok(_customerServices.GetCustomerList());
         }
+         [HttpPost("UpdateCustomer")]
+        public IActionResult UpdateCustomer(Customer customer)
+        {
+            return Ok(_customerServices.UpdateCustomer(customer));
+        }
 
         [HttpGet("GetCustomerOrderDetail")]
         public IActionResult GetCustomerOrderDetail()
