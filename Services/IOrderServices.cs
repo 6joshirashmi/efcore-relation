@@ -10,6 +10,6 @@ namespace efcorejoin.Services
     {        
         public int AddCustomersOrder(CustomerOrderDTO  customerOrderDTO);
         public IEnumerable<CustomerOrderDTO> GetCustomersOrderById(int CustomerId);      
-
+public Order UpdateOrder(Order order);
     }
 }

@@ -35,7 +35,11 @@ namespace efcorejoin.Controllers
         {
             return Ok(_orderServices.GetCustomersOrderById(id));
         }
-
+        [HttpPost("UpdateOrder")]
+        public IActionResult UpdateOrder(Order order)
+        {
+            return Ok(_orderServices.UpdateOrder(order));
+        }
 
     }
 }

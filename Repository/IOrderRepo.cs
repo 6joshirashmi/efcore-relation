@@ -11,6 +11,8 @@ namespace efcorejoin.Repository
         
         public int AddCustomersOrder(CustomerOrderDTO  customerOrderDTO);
         public List<CustomerOrderDTO> GetCustomersOrderById(int CustomerId);
+
+        public Order UpdateOrder(Order order);
        
 
     }

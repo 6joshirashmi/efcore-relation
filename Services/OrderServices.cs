@@ -23,5 +23,9 @@ namespace efcorejoin.Services
         {
             return _orderRepo.GetCustomersOrderById(CustomerId);
         }
+        public Order UpdateOrder(Order order)
+        {
+            return _orderRepo.UpdateOrder(order);
+        }
     }
 }
