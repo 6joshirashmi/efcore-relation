@@ -24,7 +24,7 @@ namespace efcorejoin.Controllers
         [HttpPost("AddCustomer")]
         public IActionResult AddCustomer(Customer customer)
         {
-            return Ok( _customerServices.AddCustomer(customer));
+            return Ok(_customerServices.AddCustomer(customer));
         }
 
         [HttpGet("GetCustomer")]
@@ -52,10 +52,16 @@ namespace efcorejoin.Controllers
         }
 
 
-        [HttpGet("GetCustomerOrderPaymentDetailById")]
+        [HttpPost("GetCustomerOrderPaymentDetailByCustomerId")]
         public IActionResult GetCustomerOrderPaymentDetail(int customerId)
         {
             return Ok(_customerServices.GetCustomerOrderPaymentDetailById(customerId));
+        }
+        
+        [HttpPost("GetCustomerPaymentDetailByOrderId")]
+        public IActionResult GetCustomerPaymentDetailByOrderId(int orderid)
+        {
+            return Ok(_customerServices.GetCustomerPaymentDetailByOrderId(orderid));
         }
     }
 }

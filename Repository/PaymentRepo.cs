@@ -37,7 +37,7 @@ namespace efcorejoin.Repository
 
 
         public List<CustomerPaymentDTO> GetCustomersPaymentListById(int id)
-        {
+        {//query syntex
             return (from c in _efcoredb.customers
                     join p in _efcoredb.payments
                     on c.CustomerId equals p.OrderId

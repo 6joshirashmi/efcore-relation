@@ -137,5 +137,41 @@ namespace efcorejoin.Repository
             }
             ).ToList();
         }
+
+
+        public CustomerOrderPaymentDTO GetCustomerPaymentDetailByOrderId(int orderid)
+        {
+
+ return (from c in _efcoredb.customers
+ join o in _efcoredb.orders 
+ on c.CustomerId equals o.CustomerId
+ join p in _efcoredb.payments
+ on o.OrderId equals p.OrderId
+ where o.OrderId==orderid
+ select new CustomerOrderPaymentDTO{
+  CustomerId = c.CustomerId,
+                            FirstName = c.FirstName,
+                            LastName =c.LastName,
+                            Email =c.Email,
+                            Phone =c.Phone,
+                            Address =c.Address,
+                            City =c.City,
+                            State =c.State,
+                            ZipCode =c.ZipCode,
+                            Amount = p.Amount,
+                            PaymentDate = p.PaymentDate,
+                            PaymentMethod = p.PaymentMethod,
+                            Currency = p.Currency,
+                            Status = p.Status,
+                            Description = p.Description,
+                            TransactionId = p.TransactionId,
+                            TotalAmount=o.TotalAmount,
+                            OrderNumber=o.OrderNumber,
+                            OrderId = p.OrderId,
+                            PaymentId=p.PaymentId
+ }).FirstOrDefault();
+   
+
+        }
     }
 }

@@ -44,5 +44,9 @@ namespace efcorejoin.Services
         {
             return _customerRepo.GetCustomerPaymentDetail();
         }
+          public CustomerOrderPaymentDTO GetCustomerPaymentDetailByOrderId(int orderid)
+          {
+            return _customerRepo.GetCustomerPaymentDetailByOrderId(orderid);
+          }
     }
 }
