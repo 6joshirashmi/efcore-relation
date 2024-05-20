@@ -106,11 +106,11 @@ namespace efcorejoin.Migrations
                     b.Property<string>("Currency")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
@@ -126,7 +126,7 @@ namespace efcorejoin.Migrations
 
                     b.HasKey("PaymentId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("payments");
                 });
@@ -144,13 +144,13 @@ namespace efcorejoin.Migrations
 
             modelBuilder.Entity("efcorejoin.Domain.Payment", b =>
                 {
-                    b.HasOne("efcorejoin.Domain.Customer", "Customer")
+                    b.HasOne("efcorejoin.Domain.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("efcorejoin.Domain.Customer", b =>

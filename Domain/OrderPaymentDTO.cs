@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace efcorejoin.Domain
 {
-    public class Payment
+    public class OrderPaymentDTO
     {
-        public int PaymentId { get; set; }
+                public int PaymentId { get; set; }
     public decimal Amount { get; set; }
     public DateTime PaymentDate { get; set; }
     public string? PaymentMethod { get; set; }
@@ -16,13 +16,7 @@ namespace efcorejoin.Domain
     public string? Description { get; set; }
 
        public string? TransactionId { get; set; }
-// Foreign key property
- // public int CustomerId { get; set; }
-   // Navigation property for the associated order
-   //public Customer? Customer{get; set;}
-// //Foreign key property
-    public int OrderId {get; set;}
-//     // Navigation property for the associated order
-   public Order? Order{get; set;}
+
+
     }
 }

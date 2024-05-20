@@ -14,8 +14,6 @@ namespace efcorejoin.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderServices _orderServices;
-
-
         private readonly ILogger<OrderController> _logger;
 
         public OrderController(ILogger<OrderController> logger, IOrderServices orderServices)
@@ -31,7 +29,7 @@ namespace efcorejoin.Controllers
             return Ok(_orderServices.AddCustomersOrder(customer));
         }
 
-        [HttpGet("GetCustomersOrder")]
+        [HttpGet("GetCustomersOrderById")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult GetCustomersOrderById(int id)
         {

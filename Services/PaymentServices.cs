@@ -13,9 +13,9 @@ namespace efcorejoin.Services
     {
 _paymentRepo=paymentRepo;
     }
-        public int AddCustomerPayment(CustomerPaymentDTO customer)
+        public int AddOrderPayment(PaymentDTO payment)
         {
-            return _paymentRepo.AddCustomerPayment(customer);
+            return _paymentRepo.AddOrderPayment(payment);
         }
 
         public IEnumerable<CustomerPaymentDTO> GetCustomersPaymentListById(int id)

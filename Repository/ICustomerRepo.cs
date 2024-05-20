@@ -13,7 +13,7 @@ namespace efcorejoin.Repository
         public IEnumerable<CustomerOrderDTO> GetCustomerOrderDetail();        
         public IEnumerable<CustomerPaymentDTO> GetCustomerPaymentDetail();
         public IEnumerable<CustomerOrderPaymentDTO> GetCustomerOrderPaymentDetail();
-        public CustomerOrderPaymentDTO GetCustomerOrderPaymentDetailById(int customerId);
+        public List<CustomerOrderPaymentDTO> GetCustomerOrderPaymentDetailById(int customerId);
         
     }
 }

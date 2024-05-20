@@ -10,7 +10,7 @@ namespace efcorejoin.Repository
     {
         
         public int AddCustomersOrder(CustomerOrderDTO  customerOrderDTO);
-        public IEnumerable<CustomerOrderDTO> GetCustomersOrderById(int CustomerId);
+        public List<CustomerOrderDTO> GetCustomersOrderById(int CustomerId);
        
 
     }

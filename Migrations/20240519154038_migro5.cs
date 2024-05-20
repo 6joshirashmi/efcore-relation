@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace efcorejoin.Migrations
 {
     /// <inheritdoc />
-    public partial class migro2 : Migration
+    public partial class migro5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -68,16 +68,16 @@ namespace efcorejoin.Migrations
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TransactionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    OrderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_payments", x => x.PaymentId);
                     table.ForeignKey(
-                        name: "FK_payments_customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "customers",
-                        principalColumn: "CustomerId",
+                        name: "FK_payments_orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "orders",
+                        principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -87,19 +87,19 @@ namespace efcorejoin.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_payments_CustomerId",
+                name: "IX_payments_OrderId",
                 table: "payments",
-                column: "CustomerId");
+                column: "OrderId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "orders");
+                name: "payments");
 
             migrationBuilder.DropTable(
-                name: "payments");
+                name: "orders");
 
             migrationBuilder.DropTable(
                 name: "customers");

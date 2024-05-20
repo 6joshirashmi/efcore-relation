@@ -10,7 +10,7 @@ namespace efcorejoin.Services
     {
         
         
-        public int AddCustomerPayment(CustomerPaymentDTO customer);
+        public int AddOrderPayment(PaymentDTO customer);
        
         public IEnumerable<CustomerPaymentDTO> GetCustomersPaymentListById(int id);
         

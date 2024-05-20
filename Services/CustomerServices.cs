@@ -35,7 +35,7 @@ namespace efcorejoin.Services
             return _customerRepo.GetCustomerOrderPaymentDetail();
         }
 
-        public CustomerOrderPaymentDTO GetCustomerOrderPaymentDetailById(int customerId)
+        public List<CustomerOrderPaymentDTO> GetCustomerOrderPaymentDetailById(int customerId)
         {
             return _customerRepo.GetCustomerOrderPaymentDetailById(customerId);
         }

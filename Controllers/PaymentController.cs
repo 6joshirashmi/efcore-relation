@@ -24,9 +24,9 @@ namespace efcorejoin.Controllers
         }
 
         [HttpPost("AddCustomerPayment")]
-        public IActionResult AddCustomerPayment(CustomerPaymentDTO customerPaymentDTO)
+        public IActionResult AddOrderPayment(PaymentDTO payment)
         {
-            return Ok(_paymentServices.AddCustomerPayment(customerPaymentDTO));
+            return Ok(_paymentServices.AddOrderPayment(payment));
         }
 
         [HttpGet("GetCustomersPaymentListById")]

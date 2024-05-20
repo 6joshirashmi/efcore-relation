@@ -18,8 +18,8 @@ namespace efcorejoin.Repository
         {
           var c=  _efcoredb.Add(customer);
             _efcoredb.SaveChanges();
-            if(c!=null)
-            c=c;
+            
+            
               return 1;
         }
 
@@ -29,23 +29,113 @@ namespace efcorejoin.Repository
         }
 
         public IEnumerable<CustomerOrderDTO> GetCustomerOrderDetail()
-        {
-            throw new NotImplementedException();
+        {// Method syntex
+         return   _efcoredb.customers
+    .Join(_efcoredb.orders,
+          c => c.CustomerId,
+          o => o.CustomerId,
+          (c, o) => new CustomerOrderDTO { 
+             OrderId = o.OrderId, CustomerId = o.CustomerId, FirstName = c.FirstName ,  
+                LastName =c.LastName,Email =c.Email,Phone =c.Phone,Address =c.Address,City =c.City,
+                State =c.State,ZipCode =c.ZipCode,RegistrationDate =c.RegistrationDate,OrderNumber = o.OrderNumber,
+                TotalAmount =o.TotalAmount,OrderDate =o.OrderDate,IsCompleted =o.IsCompleted
+            }
+            )
+   
+    .ToList();
         }
 
         public IEnumerable<CustomerOrderPaymentDTO> GetCustomerOrderPaymentDetail()
-        {
-            throw new NotImplementedException();
+        {//method syntex
+
+      
+            return  _efcoredb.customers
+                    .Join(
+                    _efcoredb.orders,c=>c.CustomerId,o=>o.CustomerId,
+                    (c,o)=> new { Customer = c, Order = o })
+                    .Join(_efcoredb.payments,co=>co.Order.OrderId,p=>p.OrderId,
+                    (co,p)=> new  CustomerOrderPaymentDTO{
+                            CustomerId = co.Customer.CustomerId,
+                            FirstName = co.Customer.FirstName,
+                            LastName =co.Customer.LastName,
+                            Email =co.Customer.Email,
+                            Phone =co.Customer.Phone,
+                            Address =co.Customer.Address,
+                            City =co.Customer.City,
+                            State =co.Customer.State,
+                            ZipCode =co.Customer.ZipCode,
+                            Amount = p.Amount,
+                            PaymentDate = p.PaymentDate,
+                            PaymentMethod = p.PaymentMethod,
+                            Currency = p.Currency,
+                            Status = p.Status,
+                            Description = p.Description,
+                            TransactionId = p.TransactionId,
+                            TotalAmount=co.Order.TotalAmount,
+                            OrderNumber=co.Order.OrderNumber,
+                            OrderId = p.OrderId,
+                            PaymentId=p.PaymentId
+                    }).ToList();
+             
         }
 
-        public CustomerOrderPaymentDTO GetCustomerOrderPaymentDetailById(int customerId)
+        public List<CustomerOrderPaymentDTO> GetCustomerOrderPaymentDetailById(int customerId)
         {
-            throw new NotImplementedException();
+            
+                   
+          return _efcoredb.customers
+          .Join( _efcoredb.orders, c=> c.CustomerId , o => o.CustomerId, (c,o) => new { Customer=c , Order=o})
+          .Join( _efcoredb.payments, co => co.Order.OrderId,p => p.OrderId ,(co , p)=> new CustomerOrderPaymentDTO{
+            CustomerId = co.Customer.CustomerId,
+                            FirstName = co.Customer.FirstName,
+                            LastName =co.Customer.LastName,
+                            Email =co.Customer.Email,
+                            Phone =co.Customer.Phone,
+                            Address =co.Customer.Address,
+                            City =co.Customer.City,
+                            State =co.Customer.State,
+                            ZipCode =co.Customer.ZipCode,
+                            Amount = p.Amount,
+                            PaymentDate = p.PaymentDate,
+                            PaymentMethod = p.PaymentMethod,
+                            Currency = p.Currency,
+                            Status = p.Status,
+                            Description = p.Description,
+                            TransactionId = p.TransactionId,
+                            TotalAmount=co.Order.TotalAmount,
+                            OrderNumber=co.Order.OrderNumber,
+                            OrderId = p.OrderId,
+                            PaymentId=p.PaymentId
+          }
+          ).Where(c=> c.CustomerId==customerId).ToList();
         }
 
         public IEnumerable<CustomerPaymentDTO> GetCustomerPaymentDetail()
         {
-            throw new NotImplementedException();
+            return _efcoredb.customers
+            .Join(_efcoredb.payments,
+            c => c.CustomerId,p=> p.OrderId,
+            (c,p)=> new CustomerPaymentDTO{
+                CustomerId = c.CustomerId,
+                        FirstName = c.FirstName,
+                        LastName = c.LastName,
+                        Email = c.Email,
+                        Phone = c.Phone,
+                        Address = c.Address,
+                        City = c.City,
+                        State = c.State,
+                        ZipCode = c.ZipCode,
+                        RegistrationDate = c.RegistrationDate,
+                        PaymentId = p.PaymentId,
+                        Amount = p.Amount,
+                        PaymentDate = p.PaymentDate,
+                        PaymentMethod = p.PaymentMethod,
+                        Currency = p.Currency,
+                        Status = p.Status,
+                        Description = p.Description,
+                        TransactionId = p.TransactionId
+            }
+            ).ToList();
         }
     }
 }
