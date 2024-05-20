@@ -24,17 +24,19 @@ public Customer UpdateCustomer(Customer customer)
 {
 var existingCustomer =(from c in _efcoredb.customers
 where c.CustomerId==customer.CustomerId
-select new  Customer {
-  CustomerId = c.CustomerId,
-                            FirstName = c.FirstName,
-                            LastName =c.LastName,
-                            Email =c.Email,
-                            Phone =c.Phone,
-                            Address =c.Address,
-                            City =c.City,
-                            State =c.State,
-                            ZipCode =c.ZipCode
-}).FirstOrDefault();
+select c
+// new  Customer {
+//                             CustomerId = c.CustomerId,
+//                             FirstName = c.FirstName,
+//                             LastName =c.LastName,
+//                             Email =c.Email,
+//                             Phone =c.Phone,
+//                             Address =c.Address,
+//                             City =c.City,
+//                             State =c.State,
+//                             ZipCode =c.ZipCode
+// }
+).FirstOrDefault();
       //  .Where(cs => cs.CustomerId == customer.CustomerId)
        // .FirstOrDefault();
 
