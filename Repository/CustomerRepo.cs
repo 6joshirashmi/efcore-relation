@@ -182,14 +182,14 @@ select c
         public CustomerOrderPaymentDTO GetCustomerPaymentDetailByOrderId(int orderid)
         {
 
- return (from c in _efcoredb.customers
- join o in _efcoredb.orders 
- on c.CustomerId equals o.CustomerId
- join p in _efcoredb.payments
- on o.OrderId equals p.OrderId
- where o.OrderId==orderid
- select new CustomerOrderPaymentDTO{
-  CustomerId = c.CustomerId,
+              var x= (from c in _efcoredb.customers
+              join o in _efcoredb.orders 
+              on c.CustomerId equals o.CustomerId
+              join p in _efcoredb.payments
+              on o.OrderId equals p.OrderId
+              where o.OrderId==orderid
+              select new CustomerOrderPaymentDTO{
+                            CustomerId = c.CustomerId,
                             FirstName = c.FirstName,
                             LastName =c.LastName,
                             Email =c.Email,
@@ -211,7 +211,7 @@ select c
                             PaymentId=p.PaymentId
  }).FirstOrDefault();
    
-
+return x;
         }
     }
 }
