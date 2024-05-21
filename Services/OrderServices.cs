@@ -14,7 +14,7 @@ namespace efcorejoin.Services
         {
             _orderRepo = orderRepo;
         }
-        public int AddCustomersOrder(CustomerOrderDTO customerOrderDTO)
+        public int AddCustomersOrder(OrderDTO customerOrderDTO)
         {
             return _orderRepo.AddCustomersOrder(customerOrderDTO);
         }
@@ -26,6 +26,27 @@ namespace efcorejoin.Services
         public Order UpdateOrder(Order order)
         {
             return _orderRepo.UpdateOrder(order);
+        }
+        public OrderPaymentDTO GetPaymentDetailByOrderId(int orderid)
+        {
+            return _orderRepo.GetPaymentDetailByOrderId(orderid);
+        }
+        public CustomerOrderDTO GetCustomerOrderDetailByOrderId(int orderid)
+        {
+            return _orderRepo.GetCustomerOrderDetailByOrderId(orderid);
+        }
+        public CustomerOrderPaymentDTO CustomerOrderPaymentDetails()
+        {
+            return _orderRepo.CustomerOrderPaymentDetails();
+        }
+
+        public IEnumerable<Order> GetOrderList()
+        {
+            return _orderRepo.GetOrderList();
+        }
+        public decimal GetOrderAmountByHighstNumber(int highestnumber)
+        {
+            return _orderRepo.GetOrderAmountByHighstNumber(highestnumber);
         }
     }
 }

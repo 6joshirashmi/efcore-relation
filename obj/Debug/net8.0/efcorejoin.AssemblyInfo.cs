@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("efcorejoin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+752c4e4aef7469c667511a6feb109531e50be40c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f828d1e8a13d9af31e96a915776b92452004267")]
 [assembly: System.Reflection.AssemblyProductAttribute("efcorejoin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("efcorejoin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

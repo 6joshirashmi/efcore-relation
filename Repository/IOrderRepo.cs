@@ -8,12 +8,15 @@ namespace efcorejoin.Repository
 {
     public interface IOrderRepo
     {
-        
-        public int AddCustomersOrder(CustomerOrderDTO  customerOrderDTO);
-        public List<CustomerOrderDTO> GetCustomersOrderById(int CustomerId);
 
+        public int AddCustomersOrder(OrderDTO customerOrderDTO);
+        public List<CustomerOrderDTO> GetCustomersOrderById(int CustomerId);
         public Order UpdateOrder(Order order);
-       
+        public OrderPaymentDTO GetPaymentDetailByOrderId(int orderid);
+        public CustomerOrderDTO GetCustomerOrderDetailByOrderId(int orderid);
+        public CustomerOrderPaymentDTO CustomerOrderPaymentDetails();
+         public IEnumerable<Order> GetOrderList();       
+        public decimal GetOrderAmountByHighstNumber(int highestnumber);
 
     }
 }
